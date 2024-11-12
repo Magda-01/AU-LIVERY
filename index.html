@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AU-Livery Food Delivery</title>
+<style>
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFA500;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Center the container content */
+}
+/* Header Styles */
+header {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background-color: #00008B; /* Blue background */
+    border-radius: 10px;
+    padding: 40px 20px; /* Add more padding for a larger rectangle */
+    width: fit-content; /* Fit content width */
+    display: inline-block;
+}
+h1, p {
+    z-index: 10;
+    position: relative;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    color: #FFFFFF; /* White text */
+}
+h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+    font-family: 'Verdana', sans-serif;
+}
+p {
+    font-size: 18px;
+}
+/* Confetti Styles */
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 20px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+    background-color: transparent;
+}
+/* Animation keyframes for confetti */
+@keyframes fall {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(300px); }
+}
+/* Confetti colors and positions */
+.confetti:nth-child(odd) { background-color: cyan; }
+.confetti:nth-child(even) { background-color: magenta; }
+.confetti:nth-child(3n) { background-color: yellow; }
+.confetti:nth-child(4n) { background-color: lime; }
+.confetti:nth-child(5n) { background-color: orange; }
+.confetti:nth-child(6n) { background-color: red; }
+.confetti:nth-child(7n) { background-color: blue; }
+.confetti:nth-child(8n) { background-color: purple; }
+/* Random starting positions and animation durations */
+.confetti:nth-child(1) { left: 2%; animation-duration: 2s; }
+.confetti:nth-child(2) { left: 4%; animation-duration: 2.5s; }
+.confetti:nth-child(3) { left: 6%; animation-duration: 3s; }
+.confetti:nth-child(4) { left: 8%; animation-duration: 3.5s; }
+.confetti:nth-child(5) { left: 10%; animation-duration: 4s; }
+.confetti:nth-child(6) { left: 12%; animation-duration: 4.5s; }
+.confetti:nth-child(7) { left: 14%; animation-duration: 5s; }
+.confetti:nth-child(8) { left: 16%; animation-duration: 5.5s; }
+.confetti:nth-child(9) { left: 18%; animation-duration: 6s; }
+.confetti:nth-child(10) { left: 20%; animation-duration: 6.5s; }
+.confetti:nth-child(11) { left: 22%; animation-duration: 7s; }
+.confetti:nth-child(12) { left: 24%; animation-duration: 7.5s; }
+.confetti:nth-child(13) { left: 26%; animation-duration: 8s; }
+.confetti:nth-child(14) { left: 28%; animation-duration: 8.5s; }
+.confetti:nth-child(15) { left: 30%; animation-duration: 9s; }
+.confetti:nth-child(16) { left: 32%; animation-duration: 9.5s; }
+.confetti:nth-child(17) { left: 34%; animation-duration: 10s; }
+.confetti:nth-child(18) { left: 36%; animation-duration: 10.5s; }
+.confetti:nth-child(19) { left: 38%; animation-duration: 11s; }
+.confetti:nth-child(20) { left: 40%; animation-duration: 11.5s; }
+.confetti:nth-child(21) { left: 42%; animation-duration: 2s; }
+.confetti:nth-child(22) { left: 44%; animation-duration: 2.5s; }
+.confetti:nth-child(23) { left: 46%; animation-duration: 3s; }
+.confetti:nth-child(24) { left: 48%; animation-duration: 3.5s; }
+.confetti:nth-child(25) { left: 50%; animation-duration: 4s; }
+.confetti:nth-child(26) { left: 52%; animation-duration: 4.5s; }
+.confetti:nth-child(27) { left: 54%; animation-duration: 5s; }
+.confetti:nth-child(28) { left: 56%; animation-duration: 5.5s; }
+.confetti:nth-child(29) { left: 58%; animation-duration: 6s; }
+.confetti:nth-child(30) { left: 60%; animation-duration: 6.5s; }
+.confetti:nth-child(31) { left: 62%; animation-duration: 7s; }
+.confetti:nth-child(32) { left: 64%; animation-duration: 7.5s; }
+.confetti:nth-child(33) { left: 66%; animation-duration: 8s; }
+.confetti:nth-child(34) { left: 68%; animation-duration: 8.5s; }
+.confetti:nth-child(35) { left: 70%; animation-duration: 9s; }
+.confetti:nth-child(36) { left: 72%; animation-duration: 9.5s; }
+.confetti:nth-child(37) { left: 74%; animation-duration: 10s; }
+.confetti:nth-child(38) { left: 76%; animation-duration: 10.5s; }
+.confetti:nth-child(39) { left: 78%; animation-duration: 11s; }
+.confetti:nth-child(40) { left: 80%; animation-duration: 11.5s; }
+.confetti:nth-child(41) { left: 82%; animation-duration: 2s; }
+.confetti:nth-child(42) { left: 84%; animation-duration: 2.5s; }
+.confetti:nth-child(43) { left: 86%; animation-duration: 3s; }
+.confetti:nth-child(44) { left: 88%; animation-duration: 3.5s; }
+.confetti:nth-child(45) { left: 90%; animation-duration: 4s; }
+.confetti:nth-child(46) { left: 92%; animation-duration: 4.5s; }
+.confetti:nth-child(47) { left: 94%; animation-duration: 5s; }
+.confetti:nth-child(48) { left: 96%; animation-duration: 5.5s; }
+.confetti:nth-child(49) { left: 98%; animation-duration: 6s; }
+.confetti:nth-child(50) { left: 100%; animation-duration: 6.5s; }
+/* Tab Navigation */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    border-bottom: 2px solid #ccc;
+}
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    background-color: #00008B;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.tab:hover {
+    background-color: #4CAF50;
+}
+.tab.active {
+    background-color: #0000CD;
+}
+/* Menu Styles */
+.menu-item {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.menu-item h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+.menu-item .arrow {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: navy;
+}
+.menu-item span {
+    font-size: 18px;
+    color: #555;
+}
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+/* Button Styles */
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #45a049;
+}
+/* Contact Section */
+#contact-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+}
+#contact-content div {
+    margin-top: 15px;
+}
+/* Feedback Section */
+#feedbacks-content p {
+    font-size: 18px;
+    color: #444;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+    <h1>AU-Livery</h1>
+    <p>Food Delivery for Averett University</p>
+</header>
+<div class="tabs">
+    <div class="tab" data-tab="subscription">Subscription</div>
+    <div class="tab" data-tab="juts">Jut's</div>
+    <div class="tab" data-tab="caff">Caff</div>
+    <div class="tab" data-tab="order-contact">Order & Contact</div>
+    <div class="tab" data-tab="feedbacks">Feedbacks</div>
+</div>
+<div class="content">
+    <!-- Subscription Content -->
+    <div id="subscription-content" style="display: none;">
+        <h2>Subscription Options</h2>
+        <p>Select your subscription plan:</p>
+        <select id="subscription-plan-select" onchange="displayPlanDetails()">
+            <option value="PLAN1">Plan 1: 9 Days</option>
+            <option value="PLAN2">Plan 2: 16 Days</option>
+            <option value="PLAN3">Plan 3: 35 Days</option>
+            <option value="PLAN4">Plan 4: 3 Months</option>
+            <option value="PLAN5">Plan 5: 4 Months</option>
+        </select>
+        <div id="plan-details"></div>
+        <button onclick="subscribe()">Subscribe</button>
+    </div>
+    <!-- Jut's Content -->
+    <div id="juts-content" style="display: none;">
+        <select id="juts-category-select">
+            <option value="JAVALANCHE">JAVALANCHE</option>
+            <option value="SMOOTHIES">SMOOTHIES</option>
+            <option value="COFFEE">COFFEE</option>
+            <option value="REFRESHERS">REFRESHERS</option>
+            <option value="SANDWICHES">SANDWICHES</option>
+            <option value="SIDES">SIDES</option>
+            <option value="DRINKS">DRINKS</option>
+        </select>
+        <div id="juts-menu-items"></div>
+    </div>
+    <!-- Caff Content -->
+    <div id="caff-content" style="display: none;">
+        <select id="caff-category-select">
+            <option value="PIZZAS">PIZZAS</option>
+            <option value="PASTA">PASTA</option>
+            <option value="BURGER">BURGER</option>
+            <option value="TOPPINGS">TOPPINGS</option>
+            <option value="DRESSINGS">DRESSINGS</option>
+            <option value="SOUPS">SOUPS</option>
+        </select>
+        <div id="caff-menu-items"></div>
+    </div>
+    <!-- Order & Contact Content -->
+    <div id="order-contact-content" style="display: none;">
+        <h2>Order & Contact Us</h2>
+        <p>Click the button below to order us via WhatsApp:</p>
+        <button onclick="contactWhatsApp()">Contact via WhatsApp</button>
+        <div>
+            <p>If you don't have WhatsApp, contact us on Instagram: <strong>@au_livery</strong></p>
+            <p><strong>WEEK:</strong> 9:00 AM - 10:00 PM</p>
+            <p><strong>WEEKEND:</strong> 9:00 AM - 10:00 PM</p>
+            <p><em>"Pre-order the day before for the day after and save time!"</em></p>
+        </div>
+    </div>
+    <!-- Feedback Content -->
+    <div id="feedbacks-content" style="display: none;">
+        <h2>Feedbacks</h2>
+        <p>We value your opinion! Click the button below to give us your feedback:</p>
+        <button onclick="openFeedbackForm()">Give Feedback</button>
+    </div>
+</div>
+</div>
+<script>
+const subscriptionPlans = {
+    PLAN1: {
+        name: "7 deliveries ",
+        duration: "10 days",
+        noSubscriptionPrice: "$14",
+        subscriptionPrice: "$11.90",
+        savings: "$2.10 =15%"
+    },
+    PLAN2: {
+        name: "14 deliveries",
+        duration: "16 days",
+        noSubscriptionPrice: "$28",
+        subscriptionPrice: "$19",
+        savings: "$9 =32%"
+    },
+    PLAN3: {
+        name: "30 deliveries",
+        duration: "35 days",
+        noSubscriptionPrice: "$60",
+        subscriptionPrice: "$35",
+        savings: "$25 =41.6%" // Corrected to lowercase 'savings'
+    },
+    PLAN4: {
+        name: "90 deliveries",
+        duration: "3 months",
+        noSubscriptionPrice: "$180",
+        subscriptionPrice: "$89",
+        savings: "$91 =50.5%" // Corrected to lowercase 'savings'
+    },
+    PLAN5: {
+        name: "120 deliveries",
+        duration: "4 months",
+        noSubscriptionPrice: "$240",
+        subscriptionPrice: "$108",
+        savings: "$132 =55%"
+    }
+};
+
+function displayPlanDetails() {
+    const selectedPlan = document.getElementById('subscription-plan-select').value;
+    const plan = subscriptionPlans[selectedPlan];
+    document.getElementById('plan-details').innerHTML = `
+        <h3>${plan.name} Plan</h3>
+        <p>Price without subscription: ${plan.noSubscriptionPrice}</p>
+        <p>Price with subscription: ${plan.subscriptionPrice}</p>
+        <p>Savings: ${plan.savings}</p>
+    `;
+}
+
+function subscribe() {
+    const selectedPlan = document.getElementById('subscription-plan-select').value;
+    const planName = subscriptionPlans[selectedPlan].name;
+    const url = `https://wa.me/330619660643?text=Hello,%20I%20'd%20like%20to%20get%20a%20PLAN%0A%0AName%3A%0APLAN%20number%3A`;
+    window.open(url, '_blank');
+}
+
+const menuItems = {
+    JAVALANCHE: [
+        { name: 'Espresso', prices: { SM: 4.79, MED: 5.19, LRG: 5.49 }, calories: { SM: 360, MED: 475, LRG: 480 } },
+        { name: 'Caramel', prices: { SM: 4.99, MED: 5.39, LRG: 5.69 }, calories: { SM: 420, MED: 600, LRG: 665 } },
+        { name: 'Mocha', prices: { SM: 4.99, MED: 5.39, LRG: 5.69 }, calories: { SM: 405, MED: 565, LRG: 615 } },
+        { name: 'White Mocha', prices: { SM: 4.99, MED: 5.39, LRG: 5.69 }, calories: { SM: 410, MED: 575, LRG: 630 } },
+        { name: 'Strawberry Cream', prices: { SM: 4.99, MED: 5.39, LRG: 5.69 }, calories: { SM: 450, MED: 500, LRG: 560 } },
+        { name: 'Vanilla Cream', prices: { SM: 4.99, MED: 5.39, LRG: 5.69 }, calories: { SM: 470, MED: 530, LRG: 590 } },
+    ],
+    SMOOTHIES: [
+        { name: 'Mango', prices: { SM: 4.89, MED: 5.39, LRG: 5.59 }, calories: { SM: 315, MED: 315, LRG: 365 } },
+        { name: 'Mixed Berry', prices: { SM: 4.89, MED: 5.39, LRG: 5.59 }, calories: { SM: 315, MED: 315, LRG: 365 } },
+        { name: 'Strawberry', prices: { SM: 4.89, MED: 5.39, LRG: 5.59 }, calories: { SM: 315, MED: 315, LRG: 365 } },
+        { name: 'Straw/Bana', prices: { SM: 4.89, MED: 5.39, LRG: 5.59 }, calories: { SM: 315, MED: 315, LRG: 365 } },
+        { name: 'Matcha Green Tea', prices: { SM: 4.69, MED: 5.29, LRG: 5.59 }, calories: { SM: 395, MED: 494, LRG: 575 } },
+    ],
+    COFFEE: [
+        { name: 'Caramel Macchiato', prices: { SM: 4.59, MED: 4.99, LRG: 5.29 }, calories: { SM: 335, MED: 445, LRG: 540 } },
+        { name: 'Cinnamon Spice Latte', prices: { SM: 4.89, MED: 5.29, LRG: 5.59 }, calories: { SM: 345, MED: 475, LRG: 630 } },
+        { name: 'Latte', prices: { SM: 4.29, MED: 4.79, LRG: 4.99 }, calories: { SM: 215, MED: 270, LRG: 350 } },
+        { name: 'Vanilla Latte', prices: { SM: 4.89, MED: 5.29, LRG: 5.59 }, calories: { SM: 295, MED: 370, LRG: 470 } },
+        { name: 'Mocha/White Mocha', prices: { SM: 4.49, MED: 4.99, LRG: 5.19 }, calories: { SM: 295, MED: 390, LRG: 510 } },
+        { name: 'Cappuccino', prices: { SM: 4.19, MED: 4.69, LRG: 4.89 }, calories: { SM: 140, MED: 175, LRG: 230 } },
+        { name: 'Americano', prices: { SM: 3.29, MED: 3.79, LRG: 3.99 }, calories: { SM: 10, MED: 15, LRG: 20 } },
+        { name: 'Coffee', prices: { SM: 2.49, MED: 2.89, LRG: 3.09 }, calories: { SM: 5, MED: 10, LRG: 15 } },
+        { name: 'Hot Chocolate', prices: { SM: 3.39, MED: 3.79, LRG: 3.99 }, calories: { SM: 310, MED: 425, LRG: 540 } },
+    ],
+    REFRESHERS: [
+        { name: 'Dragon Fruit Lychee', prices: { SM: 4.19, MED: 4.49, LRG: 4.89 }, calories: { SM: 77, MED: 103, LRG: 120 } },
+        { name: 'Strawberry Acai', prices: { SM: 4.19, MED: 4.49, LRG: 4.89 }, calories: { SM: 88, MED: 120, LRG: 140 } },
+        { name: 'Watermelon Cucumber Mint', prices: { SM: 4.19, MED: 4.49, LRG: 4.89 }, calories: { SM: 94, MED: 117, LRG: 140 } },
+    ],
+    SANDWICHES: [
+        { name: 'Meals Swipe', price: 8.49, calories: 630, description: 'Up to You' },
+        { name: 'Italian', price: 9.19, calories: 630, description: 'Ham, salami, prosciutto, fresh mozzarella, roasted red peppers, lettuce, tomato, onion, mayo, pepper relish, & hoogle splosh' },
+        { name: 'Chicken Caesar Wrap', price: 8.49, calories: 630, description: 'Grilled chicken, bacon, romaine lettuce, & Parmesan cheese' },
+        { name: 'Buffalo Chicken', price: 8.49, calories: 650, description: 'Grilled chicken, lettuce, tomato, onion, spicy pickles, & Buffalo blue spread' },
+        { name: 'Meatball', price: 8.49, calories: 650, description: 'Meatballs, tomato sauce, & provolone cheese' },
+        { name: 'Cuban', price: 8.49, calories: 500, description: 'Pulled pork, ham, Swiss cheese, lettuce, pickles, & yellow mustard' },
+        { name: 'Alabama BBQ Chicken', price: 9.79, calories: 770, description: 'Alabama BBQ sauce, bacon, pulled chicken, cheddar cheese, iceberg lettuce, sliced red onion, tomato, & pickles' },
+    ],
+    SIDES: [
+        { name: 'Apple', price: 1.29 },
+        { name: 'Potato Salad', price: 3.49 },
+        { name: 'Signature Chips', price: 2.79 },
+        { name: "Miss Vickie's Chips", price: 2.59 },
+        { name: 'Fruit Cup', price: 3.39 },
+        { name: 'Soup or Chili Bowl', price: 4.69 },
+        { name: 'Craveworthy Cookie', price: 2.79 },
+    ],
+    DRINKS: [
+        { name: 'Fountain Drink', prices: { SM: 1.99, MED: 2.49, LRG: 2.99 } },
+    ],
+    PIZZAS: [
+        { name: 'Classic Cheese Pizza', calories: 280 },
+        { name: 'Pepperoni Pizza', calories: 300 },
+    ],
+    PASTA: [
+        { name: 'Pasta of the day', calories: 30 },
+        { name: 'Alfredo Sauce (1 FL OZ)', calories: 50 },
+        { name: 'Marinara Sauce (1 FL OZ)', calories: 25 },
+    ],
+    BURGER: [
+        { name: 'Burger of the day (Hamburger / Turkey Burger / Black Bean Burger / Cheeseburger)', calories: 260 },
+        { name: 'Grilled Seasoned Chicken Breast', calories: 150, description: 'Tender chicken breast seasoned with a classic blend of salt & pepper, then grilled to perfection' },
+        { name: 'Fresh-Cut French Fries', calories: 150, description: 'House-cut hot and crispy russet French fries' },
+    ],
+    TOPPINGS: [
+        { name: 'Black Olives (1 ozw)', calories: 35 },
+        { name: 'Chopped Fresh Spinach (1/4 cup)', calories: 0 },
+        { name: 'Cucumbers (1 ozw)', calories: 0 },
+        { name: 'Grape Tomatoes (1 ozw)', calories: 5 },
+        { name: 'Romaine Lettuce (1 cup)', calories: 5 },
+        { name: 'Shredded Carrots (1 ozw)', calories: 10 },
+        { name: 'Sliced Beets (1 ozw)', calories: 10 },
+        { name: 'Sliced Green Bell Peppers (1 ozw)', calories: 5 },
+        { name: 'Sliced Red Onions (2 tablespoon)', calories: 70 },
+        { name: 'Black Beans (1 ozw)', calories: 30 },
+        { name: 'Chopped Hard-Cooked Egg (1 ozw)', calories: 45 },
+        { name: 'Garbanzo Beans (1 ozw)', calories: 45 },
+        { name: 'Shredded Cheddar Cheese (1 ozw)', calories: 110 },
+    ],
+    DRESSINGS: [ // Corrected from DRESSING to DRESSINGS
+        { name: 'Balsamic Vinaigrette (2 tablespoon)', calories: 60 },
+        { name: 'Honey Mustard Dressing (2 tablespoon)', calories: 130 },
+        { name: 'Lite Italian Dressing (2 tablespoon)', calories: 40 },
+        { name: 'Oil & Vinegar (2 tablespoon)', calories: 180 },
+        { name: 'Ranch Dressing (2 tablespoon)', calories: 100 },
+    ],
+    SOUPS: [
+        { name: 'Cheddar Jalapeno Cornbread', calories: 230 },
+        { name: 'Chicken Noodle Soup (6 fl oz)', calories: 80 },
+        { name: 'Roasted Corn & Potato Soup (6 fl oz)', calories: 80 },
+    ],
+};
+
+function displayMenu(category, menuType) {
+    const menuItemsContainer = document.getElementById(`${menuType}-menu-items`);
+    menuItemsContainer.innerHTML = '';
+    if (menuItems[category]) {
+        menuItems[category].forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'menu-item';
+            itemElement.innerHTML = `
+                <span class="arrow">➔</span>
+                <h3>${item.name}</h3>
+                <div><span>${item.calories ? item.calories + ' Cal' : ''}</span></div>
+                ${item.prices ? renderPrices(item.prices) : ''}
+                ${item.description ? `<p>${item.description}</p>` : ''}
+            `;
+            menuItemsContainer.appendChild(itemElement);
+        });
+    }
+}
+
+function renderPrices(prices) {
+    return `<p>Prices: ${Object.entries(prices).map(([size, price]) => `${size}: $${price.toFixed(2)}`).join(', ')}</p>`;
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const tabName = tab.getAttribute('data-tab');
+        document.querySelectorAll('.content > div').forEach(content => {
+            content.style.display = 'none';
+        });
+        document.getElementById(tabName + '-content').style.display = 'block';
+
+        if (tabName === "juts") {
+            const categorySelect = document.getElementById('juts-category-select');
+            categorySelect.addEventListener('change', () => {
+                displayMenu(categorySelect.value, 'juts');
+            });
+            displayMenu(categorySelect.value, 'juts');
+        } else if (tabName === "caff") {
+            const categorySelect = document.getElementById('caff-category-select');
+            categorySelect.addEventListener('change', () => {
+                displayMenu(categorySelect.value, 'caff');
+            });
+            displayMenu(categorySelect.value, 'caff');
+        }
+    });
+});
+
+function contactWhatsApp() {
+    window.open('https://wa.me/33619660643?text=Hello%2C%20this%20is%20AU-LIVERY.%0A%0AName%3A%20%0APayment%20Method%20%28Meals%20Swipe%2C%20Jut%E2%80%99s%20Bucks%2C%20Card%2C%20cash%2C%20bitcoin%20%29%20%0AOrder%20%28jut%E2%80%99s%20or%20caff%20%29%3A%20%0APlease%20send%20a%20photo%20of%20the%20back%20of%20your%20ID%20card.%0AAddress%20%28on%2Foff%20campus%20%29%3A', '_blank');
+}
+
+function openFeedbackForm() {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdt2j6lJONUwrvrT1IfkQLTknKyR4e3O-003HE1Fz6l13qxyg/viewform?vc=0', '_blank');
+}
+
+// Default to Subscription tab
+document.querySelector('.tab[data-tab="subscription"]').click();
+</script>
+</body>
+</html>
